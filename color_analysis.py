@@ -29,19 +29,9 @@ width = 0.35
 
 plt.figure(figsize=(9, 5))
 
-plt.bar(
-    x - width / 2,
-    results["benign"],
-    width,
-    label="Benign"
-)
+plt.bar(x - width / 2,results["benign"],width,label="Benign")
 
-plt.bar(
-    x + width / 2,
-    results["malignant"],
-    width,
-    label="Malignant"
-)
+plt.bar(x + width / 2,results["malignant"],width,label="Malignant")
 
 plt.xticks(x, colors)
 plt.ylabel("Mean pixel intensity (0-255)")
