@@ -1,40 +1,34 @@
-# melanoma-detection
-Development of a machine learning pipeline for melanoma classification from dermoscopic images.This project combines image processing,statistical analysis,exploratory data visualization and supervised learning to investigate patterns distinguishing benign and malignant skin lesions,with a focus on model interpretability and healthcare applications.
 # Melanoma Detection Through Dermoscopic Image Analysis
 
-### Machine Learning | Medical Imaging | Data Science | Healthcare AI
+**Machine Learning · Medical Imaging · Computer Vision · Healthcare AI**
+
+An exploratory machine learning project focused on classifying dermoscopic images into benign and malignant categories using image processing, handcrafted feature extraction, statistical analysis and supervised learning.
+
+> **Disclaimer:** This is an educational and research-oriented project. It is not a medical diagnostic system and must not be used to make clinical decisions.
+
+---
 
 ## 1. Project Overview
 
-Melanoma is one of the most aggressive forms of skin cancer. Early detection plays a critical role in improving patient outcomes and reducing mortality.
+Melanoma is an aggressive form of skin cancer for which early detection is important.
 
-This project explores the application of data science and machine learning techniques to the classification of dermoscopic images, with the objective of distinguishing benign skin lesions from malignant melanoma.
+This project explores how image processing and machine learning techniques can be applied to dermoscopic images to identify visual patterns associated with benign and malignant skin lesions.
 
-The work combines image processing, statistical analysis, feature engineering and supervised machine learning to investigate visual patterns associated with different lesion categories.
+The workflow combines image analysis, handcrafted feature extraction, exploratory data analysis and supervised classification.
 
-Beyond predictive modelling, particular attention is given to data quality, feature relationships, model interpretability and the limitations of automated classification in healthcare.
+The main objectives are to:
 
-**This project is an educational and research-oriented prototype. It is not a medical diagnostic system and cannot replace professional dermatological assessment.**
+- Explore and characterize a dermoscopic image dataset.
+- Extract numerical features from medical images.
+- Investigate colour, intensity, texture and shape descriptors.
+- Analyse relationships between extracted features.
+- Compare supervised machine learning algorithms.
+- Evaluate model performance using multiple classification metrics.
+- Discuss methodological limitations and potential sources of bias.
 
-## 2. Research Objectives
+## 2. Dataset Description
 
-The main objectives are:
-
-- Explore and characterize a labelled dermoscopic image dataset.
-- Develop an image preprocessing and feature extraction pipeline.
-- Investigate colour, intensity, texture and shape characteristics.
-- Perform exploratory data analysis and statistical visualisation.
-- Study correlations between extracted image features.
-- Compare multiple supervised machine learning algorithms.
-- Evaluate classification performance using appropriate statistical metrics.
-- Identify methodological limitations and potential sources of bias.
-
-## 3. Dataset Description
-
-The project uses a labelled image dataset organized into two categories:
-
-- **Benign (Class 0):** non-malignant skin lesions.
-- **Malignant (Class 1):** malignant skin lesions.
+The dataset contains **10,605 dermoscopic images**, divided into two categories: benign and malignant.
 
 ### Dataset distribution
 
@@ -44,131 +38,197 @@ The project uses a labelled image dataset organized into two categories:
 | Testing | 500 | 500 | 1,000 |
 | **Total** | **5,500** | **5,105** | **10,605** |
 
-The images inspected are RGB images with dimensions of 300 × 300 pixels.
+### Image characteristics
 
-The training dataset presents a moderate class imbalance, whereas the test dataset is balanced.
+- Image format: JPEG
+- Dimensions: 300 × 300 pixels
+- Colour representation: RGB
+- Classification categories: Benign and Malignant
 
-*Dataset provenance, original source and redistribution licence must be verified before publication or redistribution of the images.*
+The training set presents a moderate class imbalance, while the test set is balanced.
 
-## 4. Methodology
+The original dataset is stored locally and is not included in this repository.
 
-The project follows a structured data science workflow.
+**Dataset provenance and redistribution licence must be verified before public redistribution.**
 
-### 4.1 Image Preprocessing
+## 3. Methodology
 
-The first stage consists of preparing dermoscopic images for quantitative analysis.
+The project follows several stages, from image exploration to model evaluation.
 
-The preprocessing pipeline includes:
+### 3.1 Image preprocessing
+
+The image-processing workflow includes:
 
 - Image loading and validation.
-- RGB, HSV and CIELAB colour space conversion.
-- Grayscale transformation.
+- RGB, HSV and CIELAB colour-space analysis.
+- Grayscale and intensity analysis.
 - Heuristic foreground segmentation.
-- Extraction of lesion-related regions.
+- Preliminary lesion-region descriptors.
 
-A colour-distance-based segmentation heuristic is used to estimate the foreground region and extract preliminary shape descriptors.
+The segmentation approach is exploratory and has not been clinically validated.
 
-This approach is exploratory and does not constitute a clinically validated lesion segmentation method.
+### 3.2 Feature extraction and engineering
 
-### 4.2 Feature Engineering
-
-Images are transformed into numerical descriptors that can be analysed by machine learning algorithms.
+Each image is transformed into a numerical representation using handcrafted descriptors.
 
 The extracted features include:
 
 | Feature category | Examples |
 |---|---|
-| Colour | RGB, HSV and CIELAB channel statistics |
-| Intensity | Mean brightness and darkness quantiles |
-| Texture | Gradient magnitude and edge density |
-| Statistical | Mean, standard deviation and intensity entropy |
+| Colour | RGB, HSV and CIELAB statistics |
+| Intensity | Brightness, darkness and intensity quantiles |
+| Texture | Gradient magnitude, edge density and entropy |
+| Statistical | Means and standard deviations |
 | Shape | Area fraction, perimeter and compactness |
-| Irregularity | Heuristic perimeter-to-area descriptors |
+| Irregularity | Heuristic lesion-boundary descriptors |
 
-This stage aims to investigate whether quantitative image characteristics contain information associated with the two image labels.
+The resulting feature table contains **10,605 image records**.
 
-### 4.3 Exploratory Data Analysis
+### 3.3 Exploratory Data Analysis
 
-Exploratory data analysis is used to understand the dataset and identify potential relationships between image features.
+Exploratory analysis was conducted to understand the dataset and investigate differences between the two image categories.
 
 The analysis includes:
 
-- Class distribution and frequency analysis.
-- Descriptive statistics.
-- Feature correlation matrices.
+- Class distribution.
+- Representative dermoscopic image visualisation.
+- RGB colour comparisons.
+- Spearman feature-correlation matrix.
+- Feature-label associations.
 - Class-wise feature distributions.
-- Boxplots and barplots.
-- Univariate feature-label associations.
+- Boxplots and comparative bar charts.
 
-The objective is to identify patterns, potential redundancy between variables and differences in feature distributions across classes.
+These analyses help identify relationships between extracted variables and potential feature redundancy.
 
-Correlations and statistical associations are descriptive and do not establish causality or clinical relevance.
+Correlation does not establish causality or clinical relevance.
 
-## 5. Machine Learning Models
+## 4. Machine Learning Models
 
-Several supervised learning algorithms are implemented and compared:
+Five supervised learning algorithms were compared:
 
-| Algorithm | Main purpose |
+| Model | Description |
 |---|---|
 | Logistic Regression | Linear classification baseline |
-| k-Nearest Neighbours (k-NN) | Distance-based classification |
-| Random Forest | Ensemble learning using decision trees |
-| Support Vector Machine (SVM) | Non-linear classification with an RBF kernel |
+| k-Nearest Neighbours | Distance-based classification |
+| Random Forest | Tree-based ensemble learning |
+| RBF Support Vector Machine | Non-linear classification |
 | Extra Trees | Randomized tree-based ensemble |
 
-The models are compared using a validation subset derived from the training data.
+### Model selection strategy
 
-The selected model is subsequently refitted on the complete training dataset and evaluated on the separate test dataset.
+The training dataset was divided into a training subset and a validation subset.
 
-Preprocessing operations such as imputation and feature scaling are integrated into machine learning pipelines to reduce data leakage.
+The models were compared using validation ROC-AUC.
 
-## 6. Model Evaluation
+The selected model was then refitted on the complete training set and evaluated on the held-out test set.
 
-In medical image classification, accuracy alone is insufficient to assess model performance.
+The test set was kept separate from model selection.
 
-The evaluation therefore includes:
+## 5. Experimental Results
 
-- Accuracy.
-- Balanced accuracy.
-- Sensitivity (recall).
-- Specificity.
-- Precision.
-- F1-score.
-- ROC-AUC.
-- Average Precision.
+The best-performing model selected during validation was the **Extra Trees Classifier**.
 
-Additional visual evaluation includes:
+### 5.1 Test-set performance
 
-- Confusion matrices.
-- ROC curves.
-- Precision-Recall curves.
-- Permutation feature importance.
+Evaluation was performed on 1,000 held-out images.
 
-Particular attention is given to false negatives, corresponding to malignant-labelled images incorrectly classified as benign.
+| Metric | Result |
+|---|---:|
+| Accuracy | 90.30% |
+| Balanced Accuracy | 90.30% |
+| ROC-AUC | 96.58% |
+| Average Precision | 97.00% |
+| Sensitivity (Malignant) | 89.40% |
+| Specificity (Benign) | 91.20% |
+| Precision (Malignant) | 91.04% |
+| F1-score (Malignant) | 90.21% |
 
-No performance results are reported until the complete pipeline has been executed.
+The model achieved a ROC-AUC of approximately 0.966, indicating strong discrimination between the two image classes on this particular test set.
 
-## 7. Visualisation and Statistical Analysis
+### 5.2 Confusion matrix
 
-The project generates a collection of visual outputs:
+| Actual / Predicted | Benign | Malignant |
+|---|---:|---:|
+| Benign | 456 | 44 |
+| Malignant | 53 | 447 |
 
-1. Training dataset class distribution.
-2. Representative dermoscopic image examples.
-3. Spearman feature correlation heatmap.
-4. Feature-label association ranking.
-5. Feature distribution boxplots.
-6. Mean feature comparison between classes.
-7. Model comparison using validation ROC-AUC.
-8. Test-set confusion matrix.
-9. ROC curve.
-10. Precision-Recall curve.
-11. Permutation feature importance.
+The model correctly classified:
 
-These visualisations support the interpretation of the dataset, the comparison of machine learning models and the identification of potential limitations.
+- 456 benign images.
+- 447 malignant images.
 
-## 8. Technologies and Tools
+It also produced:
 
-The project is developed using Python and scientific computing libraries.
+- 44 false positives.
+- 53 false negatives.
+
+The 53 false negatives are particularly important to consider because they correspond to malignant-labelled images classified as benign.
+
+Sensitivity is therefore an important metric when analysing this classification task.
+
+### 5.3 Model interpretation
+
+The ROC-AUC measures the model's ability to rank malignant images above benign images across different classification thresholds.
+
+The Precision-Recall curve provides complementary information about the relationship between precision and sensitivity.
+
+The confusion matrix highlights the types of classification errors made at the selected threshold of 0.5.
+
+These results represent exploratory image-level performance, not clinical performance or evidence of clinical effectiveness.
+
+## 6. Visualisation and Analysis
+
+The project generates visualisations covering the different stages of the workflow.
+
+### 6.1 Exploratory Data Analysis
+
+**Class distribution**
+
+![Class distribution](reports/figures/01_class_distribution.png)
+
+**Representative dermoscopic images**
+
+![Image examples](reports/figures/02_image_examples.png)
+
+**Feature correlation matrix**
+
+![Feature correlation](reports/figures/03_feature_correlation.png)
+
+**Feature-label associations**
+
+![Feature-label associations](reports/figures/04_feature_label_association.png)
+
+**Mean feature values by class**
+
+![Mean features by class](reports/figures/05_mean_features_by_class.png)
+
+### 6.2 Model Evaluation
+
+**Validation model comparison**
+
+![Model comparison](reports/figures/06_model_comparison_validation.png)
+
+**Test confusion matrix — Extra Trees**
+
+![Confusion matrix](reports/figures/07_confusion_matrix_test.png)
+
+**ROC curve**
+
+![ROC curve](reports/figures/08_roc_curve_test.png)
+
+**Precision-Recall curve**
+
+![Precision Recall](reports/figures/09_precision_recall_test.png)
+
+**Permutation feature importance**
+
+![Permutation feature importance](reports/figures/10_permutation_importance.png)
+
+Additional visualisations include RGB colour comparisons and individual feature distributions.
+
+All generated figures are available in the `reports/figures/` directory.
+
+## 7. Technologies and Tools
 
 | Technology | Application |
 |---|---|
@@ -179,13 +239,15 @@ The project is developed using Python and scientific computing libraries.
 | Matplotlib | Data visualisation |
 | Seaborn | Statistical visualisation |
 | Scikit-learn | Machine learning |
-| SciPy | Statistical computations |
+| SciPy | Scientific computation |
 | Jupyter Notebook | Exploratory analysis |
 
-## 9. Repository Structure
+## 8. Repository Structure
 
 ```text
 melanoma-detection/
+│
+├── data/                         # Local dataset (not committed)
 │
 ├── src/
 │   ├── __init__.py
@@ -196,96 +258,116 @@ melanoma-detection/
 │   └── 01_project_walkthrough.ipynb
 │
 ├── reports/
-│   └── figures/
+│   ├── figures/
+│   ├── image_features.csv
+│   └── evaluation outputs
 │
-├── README.md
+├── color_analysis.py
+├── correlation_analysis.py
+├── eda.py
+├── feature_extraction.py
+├── test_dataset.py
+├── visualize_images.py
+│
 ├── CITATION.md
+├── README.md
 ├── requirements.txt
 └── .gitignore
 ```
 
-## 10. Installation and Reproducibility
+## 9. Installation and Reproducibility
 
-Clone the repository:
+### 9.1 Clone the repository
 
 ```bash
 git clone https://github.com/ami-nx23/melanoma-detection.git
 cd melanoma-detection
 ```
 
-Create a virtual environment:
+### 9.2 Create a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-Activate it on Windows:
+On Windows:
 
-```bash
+```powershell
 .venv\Scripts\activate
 ```
 
-Install the dependencies:
+### 9.3 Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Place the extracted dataset in the following structure:
+### 9.4 Prepare the dataset
+
+Extract the dataset locally using the following structure:
 
 ```text
 data/
-└── melanoma_cancer_dataset/
-    ├── train/
-    │   ├── benign/
-    │   └── malignant/
-    │
-    └── test/
-        ├── benign/
-        └── malignant/
+└── archive/
+    └── melanoma_cancer_dataset/
+        ├── train/
+        │   ├── benign/
+        │   └── malignant/
+        │
+        └── test/
+            ├── benign/
+            └── malignant/
 ```
 
-Run the analysis:
+The dataset is excluded from version control through `.gitignore`.
+
+### 9.5 Run feature extraction
 
 ```bash
-python -m src.train --data-dir data/melanoma_cancer_dataset --output-dir reports
+python feature_extraction.py
 ```
 
-Generated figures, evaluation metrics and model outputs are saved in the reports directory.
+### 9.6 Run the training pipeline
 
-## 11. Limitations and Research Considerations
+```bash
+python -m src.train --data-dir data/archive/melanoma_cancer_dataset --output-dir reports
+```
+
+The pipeline generates evaluation metrics and visual outputs in the reports directory.
+
+## 10. Limitations and Research Considerations
 
 Several limitations must be considered when interpreting the results:
 
 - The segmentation algorithm is heuristic and has not been clinically validated.
-- Image-level labels do not provide patient-level clinical information.
-- Patient identifiers are unavailable, so patient-level data splitting cannot be guaranteed.
-- Image acquisition conditions, lighting and skin characteristics may introduce bias.
-- The dataset's original provenance and licence must be independently verified.
-- Performance on this dataset does not establish generalisation to other clinical environments or populations.
+- Patient identifiers are unavailable, so patient-level separation cannot be guaranteed.
+- Image acquisition conditions and lighting may introduce bias.
+- The original dataset provenance and licence require verification.
+- The model has only been evaluated on the supplied dataset.
+- External validation is necessary to assess generalisation.
+- Image-level performance does not establish clinical effectiveness.
 
-The project should therefore be interpreted as an exploratory machine learning study rather than a validated medical application.
+The results should therefore be interpreted as an exploratory machine learning study rather than a validated medical application.
 
-## 12. Future Research Directions
+## 11. Future Research Directions
 
 Potential extensions include:
 
-- Testing more advanced image segmentation techniques.
+- Exploring more advanced image segmentation methods.
 - Comparing handcrafted features with deep learning representations.
-- Implementing Convolutional Neural Networks (CNNs).
-- Exploring transfer learning using pretrained architectures such as EfficientNet.
-- Evaluating model calibration and uncertainty.
-- Performing external validation on independently sourced datasets.
-- Investigating robustness across different imaging conditions and patient populations.
+- Implementing Convolutional Neural Networks.
+- Investigating transfer learning with pretrained architectures such as EfficientNet.
+- Evaluating model calibration and prediction uncertainty.
+- Performing patient-level validation where identifiers are available.
+- Testing on independent datasets.
+- Investigating robustness across imaging conditions and populations.
 
-## 13. Project Scope and Motivation
+## 12. Project Motivation
 
 This project reflects an interest in the intersection of artificial intelligence, biomedical research and public health.
 
-It explores how computational methods can contribute to the analysis of medical images and support research into earlier detection of potentially serious diseases.
-
-The broader objective is to develop practical skills in statistical analysis, machine learning, scientific programming and responsible AI applied to healthcare.
+It provides practical experience in scientific programming, statistical analysis, computer vision and machine learning applied to healthcare-related data.
 
 ---
 
-**Keywords:** Machine Learning · Medical Imaging · Melanoma · Computer Vision · Statistical Analysis · Feature Engineering · Healthcare AI · Python
+**Keywords:** Machine Learning · Medical Imaging · Melanoma · Computer Vision · Feature Engineering · Statistical Analysis · Healthcare AI · Python

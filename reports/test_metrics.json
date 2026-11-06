@@ -1,0 +1,28 @@
+{
+  "selected_model": "Extra Trees",
+  "test_size": 1000,
+  "accuracy": 0.903,
+  "balanced_accuracy": 0.903,
+  "roc_auc": 0.9658399999999999,
+  "average_precision": 0.9699864493351728,
+  "sensitivity_recall_malignant": 0.894,
+  "specificity_benign": 0.912,
+  "precision_malignant": 0.9103869653767821,
+  "f1_malignant": 0.9021190716448032,
+  "confusion_matrix_labels_order": [
+    "benign",
+    "malignant"
+  ],
+  "confusion_matrix": [
+    [
+      456,
+      44
+    ],
+    [
+      53,
+      447
+    ]
+  ],
+  "threshold": 0.5,
+  "note": "Exploratory image-level evaluation; not clinical performance."
+}

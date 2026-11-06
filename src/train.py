@@ -183,7 +183,7 @@ def build_models():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-dir", type=Path, default=Path("data/melanoma_cancer_dataset"))
+    parser.add_argument("--data-dir", type=Path, default=Path("data/archive/melanoma_cancer_dataset"))
     parser.add_argument("--output-dir", type=Path, default=Path("reports"))
     parser.add_argument("--refresh", action="store_true", help="Recompute image features.")
     args = parser.parse_args()
