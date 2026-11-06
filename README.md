@@ -8,7 +8,7 @@ An exploratory machine learning project focused on classifying dermoscopic image
 
 ---
 
-## 1. Project Overview
+<h2 style="color: #3776AB;">1. Project Overview</h2>
 
 Melanoma is an aggressive form of skin cancer for which early detection is important.
 
