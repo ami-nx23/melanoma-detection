@@ -36,8 +36,7 @@ for split in ["train", "test"]:
                 "value_mean": image_hsv[:,:,2].mean(),
 
                 "brightness": image_rgb.mean(),
-                "contrast": image_rgb.std()
-            }
+                "contrast": image_rgb.std()}
 
             rows.append(features)
 
