@@ -13,21 +13,8 @@ correlation_matrix = features.corr(method="spearman")
 
 # Afficher la matrice
 plt.figure(figsize=(12, 9))
-
-sns.heatmap(
-    correlation_matrix,
-    annot=True,
-    cmap="coolwarm",
-    fmt=".2f",
-    center=0
-)
-
+sns.heatmap(correlation_matrix,annot=True,cmap="coolwarm",fmt=".2f",center=0)
 plt.title("Feature Correlation Matrix")
 plt.tight_layout()
-
-plt.savefig(
-    "reports/figures/correlation_matrix.png",
-    dpi=300
-)
-
+plt.savefig("reports/figures/correlation_matrix.png",dpi=300)
 plt.show()
