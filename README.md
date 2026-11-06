@@ -55,7 +55,7 @@ The original dataset is stored locally and is not included in this repository.
 
 The project follows several stages, from image exploration to model evaluation.
 
-### 3.1 Image preprocessing
+### Image preprocessing
 
 The image-processing workflow includes:
 
@@ -67,7 +67,7 @@ The image-processing workflow includes:
 
 The segmentation approach is exploratory and has not been clinically validated.
 
-### 3.2 Feature extraction and engineering
+### Feature extraction and engineering
 
 Each image is transformed into a numerical representation using handcrafted descriptors.
 
@@ -84,7 +84,7 @@ The extracted features include:
 
 The resulting feature table contains **10,605 image records**.
 
-### 3.3 Exploratory Data Analysis
+### Exploratory Data Analysis
 
 Exploratory analysis was conducted to understand the dataset and investigate differences between the two image categories.
 
@@ -128,7 +128,7 @@ The test set was kept separate from model selection.
 
 The best-performing model selected during validation was the **Extra Trees Classifier**.
 
-### 5.1 Test-set performance
+### Test-set performance
 
 Evaluation was performed on 1,000 held-out images.
 
@@ -145,7 +145,7 @@ Evaluation was performed on 1,000 held-out images.
 
 The model achieved a ROC-AUC of approximately 0.966, indicating strong discrimination between the two image classes on this particular test set.
 
-### 5.2 Confusion matrix
+### Confusion matrix
 
 | Actual / Predicted | Benign | Malignant |
 |---|---:|---:|
@@ -166,7 +166,7 @@ The 53 false negatives are particularly important to consider because they corre
 
 Sensitivity is therefore an important metric when analysing this classification task.
 
-### 5.3 Model interpretation
+### Model interpretation
 
 The ROC-AUC measures the model's ability to rank malignant images above benign images across different classification thresholds.
 
@@ -180,7 +180,7 @@ These results represent exploratory image-level performance, not clinical perfor
 
 The project generates visualisations covering the different stages of the workflow.
 
-### 6.1 Exploratory Data Analysis
+### Exploratory Data Analysis
 
 **Class distribution**
 
@@ -202,7 +202,7 @@ The project generates visualisations covering the different stages of the workfl
 
 ![Mean features by class](reports/figures/05_mean_features_by_class.png)
 
-### 6.2 Model Evaluation
+### Model Evaluation
 
 **Validation model comparison**
 
@@ -277,14 +277,14 @@ melanoma-detection/
 
 ## 9. Installation and Reproducibility
 
-### 9.1 Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/ami-nx23/melanoma-detection.git
 cd melanoma-detection
 ```
 
-### 9.2 Create a virtual environment
+### Create a virtual environment
 
 ```bash
 python -m venv .venv
@@ -296,13 +296,13 @@ On Windows:
 .venv\Scripts\activate
 ```
 
-### 9.3 Install dependencies
+### Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 9.4 Prepare the dataset
+### Prepare the dataset
 
 Extract the dataset locally using the following structure:
 
@@ -321,13 +321,13 @@ data/
 
 The dataset is excluded from version control through `.gitignore`.
 
-### 9.5 Run feature extraction
+### Run feature extraction
 
 ```bash
 python feature_extraction.py
 ```
 
-### 9.6 Run the training pipeline
+### Run the training pipeline
 
 ```bash
 python -m src.train --data-dir data/archive/melanoma_cancer_dataset --output-dir reports
