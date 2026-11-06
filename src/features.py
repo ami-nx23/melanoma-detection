@@ -10,10 +10,7 @@ def _safe_stats(values, prefix):
     values = np.asarray(values, dtype=np.float32)
     if values.size == 0:
         return {f"{prefix}_mean": np.nan, f"{prefix}_std": np.nan}
-    return {
-        f"{prefix}_mean": float(np.mean(values)),
-        f"{prefix}_std": float(np.std(values)),
-    }
+    return {f"{prefix}_mean": float(np.mean(values)),f"{prefix}_std": float(np.std(values)),}
 
 
 def _heuristic_lesion_mask(image_rgb):
@@ -110,6 +107,5 @@ def extract_features(image_path):
             "lesion_r_mean": np.nan, "lesion_r_std": np.nan,
             "lesion_g_mean": np.nan, "lesion_g_std": np.nan,
             "lesion_b_mean": np.nan, "lesion_b_std": np.nan,
-            "lesion_gray_mean": np.nan, "lesion_gray_std": np.nan,
-        })
+            "lesion_gray_mean": np.nan, "lesion_gray_std": np.nan,})
     return features
